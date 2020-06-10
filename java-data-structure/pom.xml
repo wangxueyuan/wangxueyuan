@@ -6,7 +6,11 @@
 
     <groupId>com.wxy.learing</groupId>
     <artifactId>java-data-structure</artifactId>
+    <packaging>pom</packaging>
     <version>1.0.0</version>
+    <modules>
+        <module>../design-mode</module>
+    </modules>
 
     <parent>
         <groupId>org.example</groupId>
