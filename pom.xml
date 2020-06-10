@@ -16,6 +16,7 @@
         <module>java-data-structure</module>
         <module>java-base</module>
         <module>thinkingJava</module>
+        <module>design-mode</module>
     </modules>
 
 </project>
