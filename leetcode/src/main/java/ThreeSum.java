@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class ThreeSum {
     public static List<List<Integer>> threeSum(int[] nums) {
@@ -14,6 +11,7 @@ public class ThreeSum {
             //设定标杆数，如果该数之前已经设置过，则跳过
             if (i != 0 && nums[i] == nums[i - 1])
                 continue;
+            //如果第一个数据大于0，说明后续的数也大于0
             if (nums[i] > 0)
                 break;
             int first = i + 1;
