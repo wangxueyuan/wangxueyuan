@@ -1,8 +1,5 @@
 package tree;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class BinaryTree<T> extends AbstractBinaryTree<T> {
     TreeNode root;
 
@@ -21,35 +18,101 @@ public class BinaryTree<T> extends AbstractBinaryTree<T> {
         this.size++;
     }
 
+    public void add2(T data) {
+        if (data == null) {
+            return;
+        }
+        Comparable obj = (Comparable) data;
+        TreeNode newNode = new TreeNode(obj);
+        TreeNode dummy = this.root;
+
+        if (this.root == null) {
+            this.root = newNode;
+            return;
+        } else {
+            while (dummy != null) {
+                if (((Comparable) data).compareTo(dummy.data) > 0) {
+                    if (dummy.right == null) {
+                        dummy.right = newNode;
+                        return;
+                    }
+                    dummy = dummy.right;
+                } else {
+                    if (dummy.left == null) {
+                        dummy.left = newNode;
+                        return;
+                    }
+                    dummy = dummy.left;
+
+                }
+            }
+        }
+        this.size++;
+    }
+
     @Override
-    boolean containsData(T data) {
+    boolean containsData(TreeNode treeRoot, T data) {
         if (data == null) {
             return false;
         }
-        if (this.root == null || this.size() == 0) {
+        if (this.root == null) {
             return false;
         }
-        TreeNode tNode = new TreeNode((Comparable) data);
-        return this.root.containsTreeNode(tNode);
+
+        while (treeRoot != null) {
+            if (treeRoot.data.compareTo(data) > 0) {
+                return containsData(treeRoot.left, data);
+            } else if (treeRoot.data.compareTo(data) < 0) {
+                return containsData(treeRoot.right, data);
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 
-    @Override
-    public void delete(T data,TreeNode root) {
-        if (size() == 0 || root == null) {
+    public void delete(T data) {
+        TreeNode dummy = this.root;
+        TreeNode dummy2 = null;
+        while (dummy != null && dummy.data != data) {
+            dummy2 = dummy;
+            if (dummy.data.compareTo(data) < 0) {
+                dummy = dummy.right;
+            } else {
+                dummy = dummy.left;
+            }
+        }
+        if (dummy == null) {
             return;
         }
-        if (containsData(data)) {
-            this.root.removeNode(data);
+        if (dummy.left != null && dummy.right != null) {
+            TreeNode minP = dummy.right;
+            TreeNode minPP = dummy;
+            while (minP.left != null) {
+                minPP = minP;
+                minP = minP.left;
+            }
+            dummy.data = minP.data;
+            dummy=minP;
+            dummy2 = minPP;
+        }
+        TreeNode child;
+        if (dummy.left != null) {
+            child = dummy.left;
+        } else if (dummy.right != null) {
+            child = dummy.right;
+        } else {
+            child = null;
+        }
+        if (dummy2 == null) {
+            this.root = child;
+        } else if (dummy2.left == dummy) {
+            dummy2.left = child;
+        } else {
+            dummy2.right = child;
         }
     }
 
-    @Override
-    void inOrderSearch() {
-        if (this.root == null) {
-            return;
-        }
-        this.root.inOrderTreeNode();
-    }
 
     void preOrderSearch(TreeNode root) {
         if (root == null) {
@@ -66,22 +129,6 @@ public class BinaryTree<T> extends AbstractBinaryTree<T> {
     }
 
     @Override
-    void preOrderSearch() {
-        if (this.root == null) {
-            return;
-        }
-        this.root.preOrderTreeNode();
-    }
-
-    @Override
-    void postOrderSearch() {
-        if (this.root == null) {
-            return;
-        }
-        this.root.postOrderTreeNode();
-    }
-
-    @Override
     int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
@@ -91,18 +138,31 @@ public class BinaryTree<T> extends AbstractBinaryTree<T> {
         return maxLeft >= maxRight ? maxLeft + 1 : maxRight + 1;
     }
 
-    List inOrderSearch(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
+
+    public void preOrderTreeNode2(TreeNode root) {
         if (root == null) {
-            return null;
+            return;
         }
-        if (root.left != null) {
-            inOrderSearch(root.left);
+        System.out.println(String.format("preOrder->%s", root.data));
+        preOrderTreeNode2(root.left);
+        preOrderTreeNode2(root.right);
+    }
+
+    public void inOrderTreeNode2(TreeNode root) {
+        if (root == null) {
+            return;
         }
-        list.add((Integer) root.data);
-        if (root.right != null) {
-            inOrderSearch(root.right);
+        inOrderTreeNode2(root.left);
+        System.out.println(String.format("inOrder->%s", root.data));
+        inOrderTreeNode2(root.right);
+    }
+
+    public void postOrderTreeNode2(TreeNode root) {
+        if (root == null) {
+            return;
         }
-        return list;
+        postOrderTreeNode2(root.left);
+        postOrderTreeNode2(root.right);
+        System.out.println(String.format("postOrder->%s", root.data));
     }
 }

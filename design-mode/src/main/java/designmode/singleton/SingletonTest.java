@@ -10,25 +10,13 @@ public class SingletonTest {
         System.out.println(test1.equals(test3));
 
         new Thread(()-> {
-            try {
-                System.out.println(Singleton4.getInstance().hashCode());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println(SingletonDoubleCheck.getInstance().hashCode());
         }).start();
         new Thread(()-> {
-            try {
-                System.out.println(Singleton4.getInstance().hashCode());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println(SingletonDoubleCheck.getInstance().hashCode());
         }).start();
         new Thread(()-> {
-            try {
-                System.out.println(Singleton4.getInstance().hashCode());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println(SingletonDoubleCheck.getInstance().hashCode());
         }).start();
     }
 }
@@ -69,19 +57,30 @@ class Singleton3{
 }
 
 
-//
-class Singleton4{
-    private static Singleton4 instance;
+//双检锁
+class SingletonDoubleCheck{
+    private static SingletonDoubleCheck instance;
 
-    public static Singleton4 getInstance() throws InterruptedException {
-        Thread.sleep(3000);
+    public static SingletonDoubleCheck getInstance() {
         if (instance == null) {
-            synchronized (Singleton4.class) {
+            synchronized (SingletonDoubleCheck.class) {
                 if (instance == null) {
-                    instance = new Singleton4();
+                    instance = new SingletonDoubleCheck();
                 }
             }
         }
         return instance;
+    }
+}
+
+class SingletonLazy{
+    private static SingletonLazy singleton;
+
+    public static synchronized SingletonLazy getInstance() throws InterruptedException {
+        Thread.sleep(300L);
+        if (singleton == null) {
+            singleton = new SingletonLazy();
+        }
+        return singleton;
     }
 }

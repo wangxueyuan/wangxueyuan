@@ -1,7 +1,13 @@
 package jvm;
 
 
-import java.util.concurrent.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
+import java.util.concurrent.RecursiveTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Test0210 {
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException, ExecutionException, InterruptedException {
@@ -17,6 +23,8 @@ public class Test0210 {
     }
     private static void singleThreadSum(long[] arr) {
         long start = System.currentTimeMillis();
+
+        Map<String, String> map = new HashMap<>(32);
 
         long sum = 0;
         for (int i = 0; i < arr.length; i++) {

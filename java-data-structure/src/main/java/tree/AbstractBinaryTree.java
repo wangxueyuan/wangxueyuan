@@ -8,15 +8,7 @@ public abstract class AbstractBinaryTree<T> {
         return this.size;
     }
 
-    abstract boolean containsData(T data);
-
-    abstract void delete(T data,TreeNode root);
-
-    abstract void inOrderSearch();
-
-    abstract void preOrderSearch();
-
-    abstract void postOrderSearch();
+    abstract boolean containsData(TreeNode root,T data);
 
     abstract int maxDepth(TreeNode root);
 }

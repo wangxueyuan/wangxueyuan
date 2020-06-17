@@ -31,7 +31,7 @@ public class QuickAlgorithm {
     }
 
     public static void main(String[] args) {
-        int[] arr = {13, 22, 1, 343, 12, 8};
+        int[] arr = {13, 22, 1, 343, 12, 8, 9,324,22,13};
         QuickAlgorithm.quickSort(arr,0,arr.length-1);
         System.out.println(Arrays.toString(arr));
     }

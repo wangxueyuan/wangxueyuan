@@ -24,6 +24,6 @@ public class ClassLoaderTest {
         };
         Object obj = myLoader.loadClass("main.service.jvm.ClassLoaderTest");
         System.out.println(obj.toString());
-        System.out.println(obj instanceof main.service.jvm.ClassLoaderTest);
+        System.out.println(obj instanceof ClassLoaderTest);
     }
 }

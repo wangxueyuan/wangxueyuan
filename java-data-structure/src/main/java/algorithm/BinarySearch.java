@@ -1,5 +1,9 @@
 package algorithm;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @Author: Wang X.Y.
  * @CreateTime: 6/10/2020 09:43
@@ -110,10 +114,13 @@ public class BinarySearch {
 
     public static void main(String[] args) {
         int[] testArr = {34, 34, 35, 55, 68, 111, 1111, 1111, 2222, 3333, 4444, 4444, 4444};
+        List<Integer> list = Arrays.asList(34, 3234, 314);
+        Collections.sort(list);
         System.out.println(binarySearch(testArr,0,testArr.length,111));
         System.out.println(binarySearchFistMatch(testArr,0,testArr.length,34));
         System.out.println(binarySearchLastMatch(testArr,0,testArr.length,34));
         System.out.println(binarySearchFistMatchOrOver(testArr, 0, testArr.length, 78));
         System.out.println(binarySearchLastMatchOrBelow(testArr,0,testArr.length,3335));
+        System.out.println(6432>>5);
     }
 }

@@ -9,7 +9,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +30,7 @@ class TaskWithResult implements Callable<String>{
 public class ThreadPoolTest {
     public static void main(String[] args) {
         ThreadFactory myFactory = new ThreadFactoryBuilder().setNameFormat("Test_wxy_%s").build();
-        ExecutorService executorService = new ThreadPoolExecutor(1, 5, 0L,TimeUnit.MILLISECONDS, new LinkedBlockingDeque<>(1024), myFactory,
+        ExecutorService executorService = new ThreadPoolExecutor(1, 5, 0L,TimeUnit.MILLISECONDS, null, myFactory,
                 new ThreadPoolExecutor.AbortPolicy());
         List<FutureTask> futureTaskList = new ArrayList<>();
         int id=10;

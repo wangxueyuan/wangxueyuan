@@ -24,15 +24,16 @@ public class InsertAlgorithm {
         System.out.println(Arrays.toString(arr));
     }
 
-    public static void insert(int[] arr) {
-        if (arr.length > 1) {
-            for (int i = 0; i < arr.length; i++) {
-                for (int j = i + 1; j < arr.length; j++) {
-                    if (arr[j] < arr[i]) {
-                        int temp = arr[i];
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
+    public static void insert(int[] nums) {
+        if (nums.length == 0) {
+            return;
+        }
+        for (int i = 0; i < nums.length-1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (nums[j] < nums[j - 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j - 1];
+                    nums[j - 1] = temp;
                 }
             }
         }

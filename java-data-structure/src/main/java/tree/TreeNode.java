@@ -54,6 +54,8 @@ public class TreeNode<T> {
         }
     }
 
+
+
     public void postOrderTreeNode() {
         TreeNode curNode=this;
         if (curNode.left != null) {
@@ -63,6 +65,15 @@ public class TreeNode<T> {
             curNode.right.postOrderTreeNode();
         }
         System.out.println(String.format("postOrder->%s", curNode.data));
+    }
+
+    public void postOrderTreeNode2(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        postOrderTreeNode2(root.left);
+        postOrderTreeNode2(root.right);
+        System.out.println(String.format("postOrder->%s", root.data));
     }
 
     public void inOrderTreeNode() {
@@ -76,6 +87,8 @@ public class TreeNode<T> {
         }
     }
 
+
+
     public TreeNode getRemoveNode(T data) {
         if (this.data.compareTo(data) == 0) {
             return this;
@@ -88,7 +101,4 @@ public class TreeNode<T> {
         }
     }
 
-    public <T> void removeNode(T data) {
-
-    }
 }
