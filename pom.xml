@@ -17,6 +17,8 @@
         <module>java-base</module>
         <module>thinkingJava</module>
         <module>design-mode</module>
+        <module>ioc-container-overview</module>
+        <module>dependency-lookup</module>
     </modules>
 
 </project>

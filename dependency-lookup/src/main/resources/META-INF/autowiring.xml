@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gbk"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="noAutoWiring" class="spring.dependency.bean.Shape"
+          autowire="no">
+        <property name="circle1" ref="circle"></property>
+    </bean>
+
+    <bean id="getCircleByName" class="spring.dependency.bean.Shape"
+          autowire="byName">
+    </bean>
+
+    <bean id="getCircleByType" class="spring.dependency.bean.Shape"
+          autowire="byType">
+    </bean>
+
+    <bean id="getCircleCst" class="spring.dependency.bean.Shape"
+          autowire="constructor">
+    </bean>
+
+    <bean id="getCircleAdt" class="spring.dependency.bean.Shape"
+          autowire="autodetect">
+    </bean>
+
+    <bean id="circle" class="spring.dependency.bean.Circle">
+        <property name="center" value="center"></property>
+        <property name="radio" value="10"></property>
+    </bean>
+
+
+</beans>

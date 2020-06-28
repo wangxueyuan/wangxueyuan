@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.sort;
 
 import java.util.Arrays;
 
@@ -25,21 +25,20 @@ public class SelectAlgorithm {
     }
 
     public static void select(int[] arr) {
-        if (arr.length == 0 || arr.length == 1) {
+        if (arr.length == 0) {
             return;
         }
-
         for (int i = 0; i < arr.length-1; i++) {
-            int index = i;
-            int temp = arr[i];
+            int index=i;
+            int base = arr[i];
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < temp) {
-                    temp = arr[j];
-                    index = j;
+                if (arr[j] < base) {
+                    index=j;
+                    base = arr[j];
                 }
             }
             arr[index] = arr[i];
-            arr[i] = temp;
+            arr[i] = base;
         }
     }
 }
