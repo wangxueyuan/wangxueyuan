@@ -1,9 +1,11 @@
 package spring.dependency.lookup.autowiring;
 
+import org.geekbang.thinking.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import spring.dependency.bean.UserHolder;
 
 public class FieldAutowiredDemo {
@@ -25,5 +27,13 @@ public class FieldAutowiredDemo {
         System.out.println(userHolder);
 
         applicationContext.close();
+    }
+
+    @Bean
+    public UserHolder userHolder() {
+        User user = new User();
+        user.setId(1);
+        user.setName("tracy2");
+        return new UserHolder(user);
     }
 }
