@@ -8,7 +8,7 @@ class ListNode {
     ListNode next;
     ListNode(int x) { val = x; }
 }
-public class AddTwoNums {
+public class I2AddTwoNums {
     /**
      * 最优解
      * @param list1
@@ -21,27 +21,23 @@ public class AddTwoNums {
         dummy3.next = result;
         int overIndex=0;
         while (list1 != null || list2 != null) {
-            int temp;
-            int x = list1 != null ? list1.val : 0;
-            int y = list2 != null ? list2.val : 0;
-            if (overIndex > 0) {
-                temp = x + y + 1;
-            }else {
-                temp = x + y;
+            int sum=0;
+            if (list1 != null) {
+                sum+=list1.val;
+                list1 = list1.next;
             }
-            if (temp >= 10) {
-                result.next = new ListNode(temp % 10);
-                result = result.next;
+            if (list2 != null) {
+                sum+=list2.val;
+                list2 = list2.next;
+            }
+            sum += overIndex;
+            result.next = new ListNode(sum % 10);
+            if (sum >= 10) {
                 overIndex = 1;
             }else {
-                result.next = new ListNode(temp);
-                result = result.next;
                 overIndex = 0;
             }
-            if(list1!=null)
-                list1 = list1.next;
-            if(list2!=null)
-                list2 = list2.next;
+            result = result.next;
         }
 
         if (overIndex > 0) {

@@ -6,7 +6,7 @@ import java.util.Map;
  * @CreateTime: 6/7/2020 17:36
  * @Version: 1.0
  **/
-public class TwoSum {
+public class I1TwoSum {
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
