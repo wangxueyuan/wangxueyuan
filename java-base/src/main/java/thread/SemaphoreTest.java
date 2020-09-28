@@ -14,10 +14,13 @@ class SemaphoreWorker implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("is waiting for a permission");
+            System.out.printf("Thread get semaphore->%s, is waiting for a permission\n",
+                    Thread.currentThread().getName());
             semaphore.acquire();
             System.out.println("acquire a permission");
             System.out.println("executed");
+            Thread.sleep(2000L);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {

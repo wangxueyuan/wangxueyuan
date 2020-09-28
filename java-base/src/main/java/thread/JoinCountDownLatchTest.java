@@ -3,9 +3,10 @@ package thread;
 import java.util.concurrent.CountDownLatch;
 
 public class JoinCountDownLatchTest {
-    static CountDownLatch c = new CountDownLatch(2);
+
     public static void main(String[] args) throws InterruptedException {
-        Runnable r1=new Runnable() {
+        CountDownLatch c = new CountDownLatch(3);
+        Runnable r1 = new Runnable() {
             @Override
             public void run() {
                 try {

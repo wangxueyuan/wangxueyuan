@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class SyncTest {
     private static class Sync extends AbstractQueuedSynchronizer{
+        @Override
         public boolean tryAcquire(int acquires) {
             if (compareAndSetState(0, 1)) {
                 setExclusiveOwnerThread(Thread.currentThread());
@@ -14,6 +15,7 @@ public class SyncTest {
             return false;
         }
 
+        @Override
         protected boolean tryRelease(int release) {
             setExclusiveOwnerThread(null);
             setState(0);

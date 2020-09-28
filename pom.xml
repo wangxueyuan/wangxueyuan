@@ -19,6 +19,9 @@
         <module>design-mode</module>
         <module>ioc-container-overview</module>
         <module>dependency-lookup</module>
+        <module>spring-bean</module>
+        <module>wxy-flink-learning</module>
+        <module>amqp</module>
     </modules>
 
 </project>

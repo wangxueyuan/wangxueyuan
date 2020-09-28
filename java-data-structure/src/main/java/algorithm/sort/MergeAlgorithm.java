@@ -44,23 +44,24 @@ public class MergeAlgorithm {
 
     public static void merge(int[] arr, int start, int mid, int end) {
         int[] tempArr = new int[arr.length];
-        int low = start, high = mid + 1;
-        int index=start;
-        while (low <= mid && high <= end) {
-            if (arr[low] < arr[high]) {
-                tempArr[index++] = arr[low++];
-            }else {
-                tempArr[index++] = arr[high++];
+        int left = start, right = mid + 1;
+        int index = left;
+        int temp = left;
+        while (left <= mid && right <= end) {
+            if (arr[left] <= arr[right]) {
+                tempArr[index++] = arr[left++];
+            } else {
+                tempArr[index++] = arr[right++];
             }
         }
-        while (low <= mid) {
-            tempArr[index++] = arr[low++];
+        while (left <= mid) {
+            tempArr[index++] = arr[left++];
         }
-        while (high <= end) {
-            tempArr[index++] = arr[high++];
+        while (right <= end) {
+            tempArr[index++] = arr[right++];
         }
-        while (start <= end) {
-            arr[start] = tempArr[start++];
+        while (temp <= end) {
+            arr[temp] = tempArr[temp++];
         }
     }
 

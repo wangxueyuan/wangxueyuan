@@ -2,7 +2,7 @@ package algorithm.sort;
 
 import java.util.Arrays;
 
-public class MaoPao {
+public class BubbleSort {
     public static void bubbleSort(int[] arr) {
         if (arr.length == 0 || arr.length == 1) {
             return;
@@ -20,7 +20,7 @@ public class MaoPao {
 
     public static void main(String[] args) {
         int[] arr = {13, 22, 13, 1, 343, 12, 8};
-        MaoPao.bubble(arr);
+        BubbleSort.bubble(arr);
         System.out.println(Arrays.toString(arr));
     }
 

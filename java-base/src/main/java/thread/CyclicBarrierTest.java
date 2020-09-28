@@ -9,7 +9,7 @@ public class CyclicBarrierTest {
     public static void main(String[] args) throws BrokenBarrierException, InterruptedException {
         new Thread(()->{
             try {
-                System.out.println(c.getNumberWaiting());
+                System.out.printf("getNumber waiting->%d\n", c.getNumberWaiting());
 
                 Thread.sleep(2000);
                 c.await();
